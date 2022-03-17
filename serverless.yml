@@ -1,0 +1,56 @@
+org: rafiqueacudjoe
+app: test-weather-functions
+service: test-weather-functions
+
+frameworkVersion: '2 || 3'
+
+plugins:
+  - serverless-offline
+
+useDotenv: true
+
+package:
+  individually: true
+  excludeDevDependencies: true
+  exclude:
+    - "!**/.vscode/**"
+    - "!**/package-lock.json"
+    - "!node_modules/aws-sdk/**"
+
+provider:
+  name: aws
+  runtime: nodejs14.x
+  lambdaHashingVersion: '20201221'
+  region: eu-central-1
+  httpApi:
+    cors: true
+  iamRoleStatements:
+    - Effect: Allow
+      Action:
+        - secretsmanager:GetSecretValue
+      Resource: "*"
+
+    # - Effect: Allow
+    #   Action:
+    #     - AWSLambdaVPCAccessExecutionRole
+    #   Resource: "*"
+
+
+
+    
+
+
+functions:
+  # express lambda for nft drop endpoints
+  testWeather:
+    handler: lambdas/openweather/index.handler
+    description: express lambda open weather test
+    
+     
+    package:
+      patterns:
+        - '!**/lambdas'
+        - '**/lambdas/openweather/**'
+    events:
+      - httpApi: '*'
+
