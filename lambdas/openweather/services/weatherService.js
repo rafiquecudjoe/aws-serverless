@@ -1,9 +1,9 @@
 
 const axios = require('axios')
-const SecretsManager = require('./secretsManager');
-const redis = require("redis")
+const SecretsManager = require('../utils/secretsManager');
+// const redis = require("redis")
 
-const retrieveWeather = async(city) => {
+const retrieveWeather = async (city) => {
 
     //     const redisOptions = {
     //     host: "mycluster.kneaye.0001.use1.cache.amazonaws.com",
@@ -28,7 +28,7 @@ const retrieveWeather = async(city) => {
     //    return res.status(200).json({ status:true, data: redisMeta});
     // }
 
-    var secretName = "ApiKey";
+    var secretName = "open-weather";
     var region = "us-east-2";
     var apiValue = await SecretsManager.getSecret(secretName, region);
 
