@@ -3,7 +3,7 @@ const axios = require('axios')
 const SecretsManager = require('./secretsManager');
 const redis = require("redis")
 
-export default async function retrieveWeather(city) {
+const retrieveWeather = async(city) => {
 
     //     const redisOptions = {
     //     host: "mycluster.kneaye.0001.use1.cache.amazonaws.com",
@@ -42,6 +42,8 @@ export default async function retrieveWeather(city) {
 
     return currenWeather.data
 
-                // // STORE TO REDIS
-                // await client.set(redisKey, JSON.stringify(CurrenWeather.data));
+    // // STORE TO REDIS
+    // await client.set(redisKey, JSON.stringify(CurrenWeather.data));
 }
+
+module.exports = retrieveWeather

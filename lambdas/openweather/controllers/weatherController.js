@@ -1,4 +1,4 @@
-const { default: retrieveWeather } = require("../services/weatherService");
+const retrieveWeather = require("../services/weatherService");
 const joi = require('joi')
 
 
