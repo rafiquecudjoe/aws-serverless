@@ -41,7 +41,7 @@ provider:
 
 
 functions:
-  # express lambda for nft drop endpoints
+  # lambda to get weather details
   testWeather:
     handler: lambdas/openweather/index.handler
     description: express lambda open weather test

@@ -2,7 +2,7 @@ const serverless = require('serverless-http');
 const express = require('express');
 const cors = require('cors');
 
-const WeatherController = require('./controllers/Weather');
+const WeatherController = require('./controllers/weatherController');
 
 
 
