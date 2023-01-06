@@ -6,11 +6,11 @@ exports.getCurrenWeather = async (req, res) => {
     try {
 
         const validatePayload = joi.object({
-            email: joi.string().required().label("City"),
+            city: joi.string().required().label("City"),
         }).strict();
 
-        if (validatePayload.validate(req.body).error) {
-            return res.status(400).json(validatePayload.validate(req.body).error.details);
+        if (validatePayload.validate(req.query).error) {
+            return res.status(400).json(validatePayload.validate(req.query).error.details);
         }
 
         const data = await retrieveWeather(req.query.city)
