@@ -28,7 +28,7 @@ const retrieveWeather = async (city) => {
     //    return res.status(200).json({ status:true, data: redisMeta});
     // }
 
-    var secretName = "open-weather";
+    var secretName = "weather";
     var region = "us-east-1";
     var apiValue = await SecretsManager.getSecret(secretName, region);
 
