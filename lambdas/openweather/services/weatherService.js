@@ -29,7 +29,7 @@ const retrieveWeather = async (city) => {
     // }
 
     var secretName = "open-weather";
-    var region = "us-east-2";
+    var region = "us-east-1";
     var apiValue = await SecretsManager.getSecret(secretName, region);
 
     const Secretkey = JSON.parse(apiValue)
