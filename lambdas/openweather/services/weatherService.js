@@ -14,7 +14,7 @@ console.info('Connected to Redis Server')
 client.on('error', (err) => console.log('Redis Client Error: ', err));
 
 console.log("Connecting to Redis...");
-await client.connect();
+client.connect();
 console.log("Connected to Redis");
 
 const retrieveWeather = async (city) => {
