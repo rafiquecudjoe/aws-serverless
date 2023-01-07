@@ -21,7 +21,7 @@ provider:
   name: aws
   runtime: nodejs14.x
   lambdaHashingVersion: '20201221'
-  region: eu-central-1
+  region: eu-east-1
   httpApi:
     cors: true
   iamRoleStatements:
