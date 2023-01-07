@@ -6,7 +6,8 @@ const redis = require("redis")
 const retrieveWeather = async (city) => {
 
     const redisOptions = {
-        url: "redis://weather-001.yo10re.0001.use1.cache.amazonaws.com:6379",
+        host: "weather-001.yo10re.0001.use1.cache.amazonaws.com",
+        port: 6379
     }
 
     const client = redis.createClient(redisOptions)
@@ -23,41 +24,29 @@ const retrieveWeather = async (city) => {
 
     const redisMeta = await client.get(redisKey);
 
+    console.log(redisMeta)
 
     if (redisMeta) {
         return res.status(200).json({ status: true, data: redisMeta });
-    }
- 
+    } 
+
     var secretName = "weather";
-
     var region = "us-east-1";
-
     var apiValue = await SecretsManager.getSecret(secretName, region);
 
-    if (!apiValue) {
-        return {
-            status: false,
-            message: "API secret not found",
-            data:{}
-        } 
-    }
-    
     const Secretkey = JSON.parse(apiValue)
 
     const openApiKey = Secretkey.OPEN_WEATHER_API_KEY
 
 
+
     const currenWeather = await axios.get(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${openApiKey}`)
 
-    await client.set(city, JSON.stringify(currenWeather.data))
-
+    await client.set(city, currenWeather.data)
+    
     await client.disconnect()
 
-    return {
-        status: true,
-        message:"Weather data retrieved successfully",
-        data: currenWeather.data
-    }
+    return currenWeather.data
 
     // const celCius = 500 - 273.15
 
