@@ -6,7 +6,7 @@ const redis = require("redis")
 const retrieveWeather = async (city) => {
 
     const redisOptions = {
-        url: "rediss://weather-001.yo10re.0001.use1.cache.amazonaws.com:6379",
+        url: "redis://weather-001.yo10re.0001.use1.cache.amazonaws.com:6379",
     }
 
     const client = redis.createClient(redisOptions)
