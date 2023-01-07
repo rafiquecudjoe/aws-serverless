@@ -30,10 +30,10 @@ provider:
         - secretsmanager:GetSecretValue
       Resource: "*"
 
-    # - Effect: Allow
-    #   Action:
-    #     - AWSLambdaVPCAccessExecutionRole
-    #   Resource: "*"
+    - Effect: Allow
+      Action:
+        - AWSLambdaVPCAccessExecutionRole
+      Resource: "*"
 
 
 functions:
@@ -42,7 +42,7 @@ functions:
     handler: lambdas/openweather/index.handler
     description: express lambda open weather test
     environment:
-      REDIS_HOST: redis://weather-001.yo10re.0001.use1.cache.amazonaws.com
+      REDIS_HOST: weather-001.yo10re.0001.use1.cache.amazonaws.com
       REDIS_PORT: 6379
      
     package:
