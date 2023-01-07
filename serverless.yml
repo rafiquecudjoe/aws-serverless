@@ -35,19 +35,6 @@ provider:
     #     - AWSLambdaVPCAccessExecutionRole
     #   Resource: "*"
 
-  custom:
-    env:
-    dev:
-      debug: true
-      HOST: redis://weather-001.yo10re.0001.use1.cache.amazonaws.com
-      PORT: 6379
-      
-    prod:
-      debug: true
-      HOST: redis://weather-001.yo10re.0001.use1.cache.amazonaws.com
-      PORT: 6379
-
-
 
 functions:
   # lambda to get weather details
@@ -55,11 +42,8 @@ functions:
     handler: lambdas/openweather/index.handler
     description: express lambda open weather test
     environment:
-      DEBUG: ${self:custom.env.${opt:stage}.debug}
-      MONGODB_CONNECTION_STRING: ${self:custom.env.${opt:stage}.mongo-uri}
-      WEB3_PROVIDER_RPC: ${self:custom.env.${opt:stage}.web3-provider-rpc}
-      REDIS_HOST: ${self:custom.env.${opt:stage}.HOST}
-      REDIS_PORT: ${self:custom.env.${opt:stage}.PORT}
+      REDIS_HOST: redis://weather-001.yo10re.0001.use1.cache.amazonaws.com
+      REDIS_PORT: 6379
      
     package:
       patterns:
