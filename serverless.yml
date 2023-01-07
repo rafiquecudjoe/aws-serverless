@@ -33,7 +33,7 @@ provider:
     - Effect: Allow
       Action:
         - AWSLambdaVPCAccessExecutionRole
-      Resource: "*"
+      Resource: arn:aws:iam::210712744793:role/lambda-vpc-role
 
 
 functions:
