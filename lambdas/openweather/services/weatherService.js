@@ -6,8 +6,8 @@ const redis = require("redis")
 const retrieveWeather = async (city) => {
 
     const redisOptions = {
-        host: "weather-001.yo10re.0001.use1.cache.amazonaws.com",
-        port: 6379
+        host: process.env.REDIS_HOST,
+        port: process.env.REDIS_PORT
     }
 
     const client = redis.createClient(redisOptions)
