@@ -15,7 +15,7 @@ exports.getCurrenWeather = async (req, res) => {
 
         const data = await retrieveWeather(req.query.city)
 
-        return res.status(200).json({ status: true, data });
+        return res.status(200).json({ status: data.status,message:data.message, data:data.data });
 
     } catch (error) {
         return res.status(500).json({ message: error.message });
