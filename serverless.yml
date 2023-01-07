@@ -32,8 +32,8 @@ provider:
 
     - Effect: Allow
       Action:
-        - AWSLambdaVPCAccessExecutionRole
-      Resource: arn:aws:iam::210712744793:role/lambda-vpc-role
+        - aws:AWSLambdaVPCAccessExecutionRole
+      Resource: "*"
 
 
 functions:
